@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>sport</b>station',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -224,15 +224,15 @@ return [
     |
     */
 
-    'menu' => [
+  'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'type' => 'navbar-search',
+            'text' => 'search',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -242,21 +242,36 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'buku',
-            'url' => 'admin/buku',
-            'icon' => 'far fa-fw fa-file'
+            'text' => 'home',
+            'url' => 'admin/dasboard',
+            'icon' => ' fa-dashboard',
         ],
 
-         [
-            'text' => 'pengarang',
-            'url' => 'admin/pengarang',
-            'icon' => 'far fa-fw fa-file'
-        ],
+        ['header' => 'Fitur - Fitur'],
 
-         [
-            'text' => 'menu lainnya',
-            'url' => 'admin/menu lainnya',
-            'icon' => 'far fa-fw fa-file'
+        [
+            'text' => 'kategori produk',
+            'url' => 'pengguna/kategori produk',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'alat sepak bola',
+                    'url' => 'pengguna/alat sepak bola',
+                    'icon' => 'fa fa-life-bouy',
+                ],
+
+                [
+                    'text' => 'alat gym',
+                    'url' => 'pengguna/alat gym',
+                    'icon' => 'far fa-fw fa-file'
+                ],
+
+                 [
+                    'text' => 'alat basket',
+                    'url' => 'pengguna/alat basket',
+                    'icon' => 'far fa-fw fa-file'
+                ],
+            ],
         ],
 
 
