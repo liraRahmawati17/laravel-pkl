@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes(
     [
-        'register' => false,
+        'register' => true,
     ]
 );
 
@@ -49,12 +49,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 
 // hanya untuk role pengguna
-// Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']], function () {
-//     route::get('/', function () {
-//         return 'halaman pengguna';
-//     });
+Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']], function () {
+    route::get('/', function () {
+        return 'halaman pengguna';
+    });
 
-//     Route::get('profile', function () {
-//         return 'halaman profile pengguna';
-//     });
-// });
+    Route::get('profile', function () {
+        return 'halaman profile pengguna';
+    });
+});

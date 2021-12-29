@@ -14,7 +14,12 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $produk = produk::all();
+        Session::flash("flash_notification",[
+            "level"=>"success",
+            "messege"=>"berhasil menyimpan"
+        ]);
+        return view('produk.index', compact ('produk'));
     }
 
     /**
@@ -24,7 +29,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view ('produk.create');
     }
 
     /**
@@ -35,7 +40,10 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi data
+        $validated = $request->validate([
+            
+        ]);
     }
 
     /**
