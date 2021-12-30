@@ -16,10 +16,13 @@
                                 <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> data produk<span class="fa arrow"></span></a>
+                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> data data barang<span class="fa arrow"></span></a>
                                   <ul class="nav nav-second-level">
+                                        <li>
+                                        <a href="{{route('suplier.index')}}">suplier</a>
+                                    </li>
                                     <li>
-                                        <a href="flot.html">produk terjual</a>
+                                        <a href="flot.html">produk baru</a>
                                     </li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> kategori produk<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

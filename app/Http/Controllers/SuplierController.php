@@ -14,7 +14,8 @@ class SuplierController extends Controller
      */
     public function index()
     {
-        //
+        $suplier = suplier::all();
+        return view('suplier.index', compact('suplier'));
     }
 
     /**
@@ -24,7 +25,7 @@ class SuplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('suplier.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class SuplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi data
+        $validated = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        $suplier = new Suplier;
+        $suplier->nama = $request->nama;
+        $suplier->alamat = $request->alamat;
+        $suplier->save();
+        return redirect()->route('suplier.index');
     }
 
     /**
@@ -46,7 +57,8 @@ class SuplierController extends Controller
      */
     public function show(suplier $suplier)
     {
-        //
+        $suplier = Suplier::findOrFail($id);
+        return view ('suplier.show', compact('suplier'));
     }
 
     /**
@@ -57,7 +69,9 @@ class SuplierController extends Controller
      */
     public function edit(suplier $suplier)
     {
-        //
+        $suplier = Suplier::findOrFail($id);
+        return view('suplier.edit', compact('suplier'));
+
     }
 
     /**
@@ -69,7 +83,16 @@ class SuplierController extends Controller
      */
     public function update(Request $request, suplier $suplier)
     {
-        //
+        $validated = $request->validate([
+             'nama' => 'required',
+            'alamat' => 'required'
+        ]);
+        $suplier = Suplier::findOrFail($id);
+        $suplier->nama = $request->nama;
+        $suplier->alamat = $request->alamat;
+        $suplier->save();
+        return redirect()->route('suplier.index');
+
     }
 
     /**
@@ -80,6 +103,8 @@ class SuplierController extends Controller
      */
     public function destroy(suplier $suplier)
     {
-        //
+        $suplier = Suplier::findOrFail($id);
+        $suplier->delete();
+        return redirect()->route('suplier.index');
     }
 }

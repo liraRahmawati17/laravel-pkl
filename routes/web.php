@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\produkController;
+use App\Http\Controllers\suplierController;
+use App\Http\Controllers\TransaksiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +62,17 @@ Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']]
         return 'halaman profile pengguna';
     });
 });
+
+// route penjualan alat olahraga
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    route::get('/', function () {
+        return view ('layouts.admin');
+    });
+
+});
+    Route::resource('barang', BarangController::class);
+    Route::resource('suplier', SuplierController::class);
+    Route::resource('transaksi', TransaksiController::class);
+
+
+
