@@ -37,10 +37,10 @@ class SuplierController extends Controller
     public function store(Request $request)
     {
         // validasi data
-        $validated = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required'
-        ]);
+        // $validated = $request->validate([
+        //     'nama' => 'required',
+        //     'alamat' => 'required'
+        // ]);
 
         $suplier = new Suplier;
         $suplier->nama = $request->nama;
@@ -58,7 +58,7 @@ class SuplierController extends Controller
     public function show(suplier $suplier)
     {
         $suplier = Suplier::findOrFail($id);
-        return view ('suplier.show', compact('suplier'));
+        return view('suplier.show', compact('suplier'));
     }
 
     /**
@@ -84,8 +84,8 @@ class SuplierController extends Controller
     public function update(Request $request, suplier $suplier)
     {
         $validated = $request->validate([
-             'nama' => 'required',
-            'alamat' => 'required'
+            'nama' => 'required',
+            'alamat' => 'required',
         ]);
         $suplier = Suplier::findOrFail($id);
         $suplier->nama = $request->nama;

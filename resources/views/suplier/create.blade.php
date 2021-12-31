@@ -72,22 +72,22 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                    <form Action="{{ route('suplier.store') }}" method="post">
-                                    @csrf
-                                    <div class="panel-body">
-                                        <label>nama suplier</label>
-                                        <input type="text" class="form-control" name="nama_suplier">
-                                    </div>
-                                    <div class="panel-body">
-                                        <label>alamat suplier</label>
-                                        <input type="text" class="form-control" name="alamat">
-                                    </div>
-                                    <div class="panel-body">
-                                        <button type="reset" class="btn btn-warning">Reset</button>
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
-                                    </div>
-                                    </form>
-                                        </thead>
+                                        <form Action="{{ route('suplier.store') }}" method="post">
+                                            @csrf
+                                            <div class="panel-body">
+                                                <label>nama suplier</label>
+                                                <input type="text" class="form-control" name="nama">
+                                            </div>
+                                            <div class="panel-body">
+                                                <label>alamat suplier</label>
+                                                <input type="text" class="form-control" name="alamat">
+                                            </div>
+                                            <div class="panel-body">
+                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                            </div>
+                                        </form>
+                                    </thead>
 
                                 </table>
                             </div>

@@ -67,7 +67,8 @@
                         <div class="panel-heading">
                             tabel suplier
                         </div>
-                        <a href="{{route('suplier.create')}}" class="btn btn-sm btn-primary float-right">Tambah Data Suplier</a>
+                        <a href="{{ route('suplier.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data
+                            Suplier</a>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -82,17 +83,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            @php $no=1; @endphp
-                                            @foreach ($suplier as $data)
+                                        @php $no=1; @endphp
+                                        @foreach ($suplier as $data)
+                                            <tr>
+
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data->nama_suplier}}</td>
+                                                <td>{{ $data->nama }}</td>
                                                 <td>{{ $data->alamat }}</td>
 
-                                            @endforeach
 
-                                        </tr>
 
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
