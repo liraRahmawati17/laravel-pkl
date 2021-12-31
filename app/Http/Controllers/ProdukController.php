@@ -38,9 +38,22 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         //validasi data
-        $validated = $request->validate([
-
+        $request->validate([
+            'nama' => 'required|unique:barangs',
+            'harga' => 'required',
+            'stok' => 'required',
+            'id_suplier' => 'required',
         ]);
+
+        $produk = new produk;
+        $produk->nama = $request->nama;
+        $produk->harga = $request->harga;
+        $produk->stok = $request->stok;
+
+        $produk->id_suplier = $request->id_suplier;
+        $produk->save();
+        return redirect()->route('produk.index');
+
     }
 
     /**
@@ -51,7 +64,9 @@ class ProdukController extends Controller
      */
     public function show(produk $produk)
     {
-        //
+        $produk = produk::findOrFail($id);
+        return view('produk.show', compact('produk'));
+
     }
 
     /**
@@ -62,7 +77,9 @@ class ProdukController extends Controller
      */
     public function edit(produk $produk)
     {
-        //
+        $produk = produk::findOrFail($id);
+return view('produk.edit', compact('produk', 'suplier'));
+
     }
 
     /**
@@ -74,7 +91,21 @@ class ProdukController extends Controller
      */
     public function update(Request $request, produk $produk)
     {
-        //
+         $request->validate([
+            'nama' => 'required',
+            'harga' => 'required',
+            'stok' => 'required',
+            'id_suplier' => 'required',
+        ]);
+
+        $produk = produk::findOrFail($id);
+        $produk->nama = $request->nama;
+        $produk->harga = $request->harga;
+        $produk->stok = $request->stok;
+
+        $produk->id_suplier = $request->id_suplier;
+        $produk->save();
+        return redirect()->route('produk.index');
     }
 
     /**
@@ -85,6 +116,9 @@ class ProdukController extends Controller
      */
     public function destroy(produk $produk)
     {
-        //
+        $produk = produk::findOrFail($id);
+        $produk->delete();
+        return redirect()->route('produk.index');
+
     }
 }

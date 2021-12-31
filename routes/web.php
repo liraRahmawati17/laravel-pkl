@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\produkController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\suplierController;
 use App\Http\Controllers\TransaksiController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +50,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 });
 
-
 // hanya untuk role pengguna
 Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']], function () {
     route::get('/', function () {
@@ -66,13 +64,10 @@ Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']]
 // route penjualan alat olahraga
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     route::get('/', function () {
-        return view ('layouts.admin');
+        return view('layouts.admin');
     });
 
 });
-    Route::resource('barang', BarangController::class);
-    Route::resource('suplier', SuplierController::class);
-    Route::resource('transaksi', TransaksiController::class);
-
-
-
+Route::resource('barang', BarangController::class);
+Route::resource('suplier', SuplierController::class);
+Route::resource('transaksi', TransaksiController::class);

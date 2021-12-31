@@ -72,30 +72,23 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>no</th>
-                                            <th>nama</th>
-                                            <th>alamat</th>
-                                            <th>email</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                        @php $no=1; @endphp
-                                        @foreach($suplier as $data)
-                                      <td>{{$no++}}</td>
-                                     <td>{{$data->nama_barang}}</td>
-                                     <td>{{$data->alamat}}</td>
-                                     <td>{{$data->email}}</td>
-                                     <td>
-                                    @endforeach
-                                    <div class="form-group">
-                            <button type="reset" class="btn btn-warning">Reset</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
+                                    <form Action="{{ route('suplier.store') }}" method="post">
+                                    @csrf
+                                    <div class="panel-body">
+                                        <label>nama suplier</label>
+                                        <input type="text" class="form-control" name="nama_suplier">
+                                    </div>
+                                    <div class="panel-body">
+                                        <label>alamat suplier</label>
+                                        <input type="text" class="form-control" name="alamat">
+                                    </div>
+                                    <div class="panel-body">
+                                        <button type="reset" class="btn btn-warning">Reset</button>
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                    </div>
+                                    </form>
+                                        </thead>
 
-                                    </tr>
-                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
