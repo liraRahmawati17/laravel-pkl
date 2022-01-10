@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\penjualan;
+use App\Models\produk;
+use App\Models\pelanggan;
+
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -14,7 +17,8 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        //
+        $penjualan = penjualan::with('produk')->get();
+        return view('penjualan.index', compact ('penjualan'));
     }
 
     /**
@@ -24,7 +28,10 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        //
+        $penjualan = penjualan::all();
+        $produk = produk::all();
+        $pelanggan = pelanggan::all();
+        return view ('penjualan.create', compact ('penjualan','produk', 'pelanggan')) ;
     }
 
     /**
@@ -35,7 +42,25 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validasi data
+         $request->validate([
+            'nama' => 'required',
+            'pelanggan_id' => 'required',
+            'produk_id' => 'required',
+            'harga' => 'required',
+            'qty' => 'required',
+
+        ]);
+
+        $penjualan = new penjualan;
+        $penjualan->nama = $request->nama;
+        $penjualan->pelanggan_id = $request->pelanggan_id;
+        $penjualan->produk_id = $request->produk_id;
+        $penjualan->harga = $request->harga;
+        $penjualan->qty = $request->qty;
+        $penjualan->save();
+        return redirect()->route('penjualan.index');
+
     }
 
     /**
@@ -44,9 +69,12 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function show(penjualan $penjualan)
+    public function show($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $produk = produk::all();
+        $pelanggan = pelanggan::all();
+        return view('penjualan.show', compact('penjualan', 'produk', 'pelanggan'));
     }
 
     /**
@@ -55,9 +83,12 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function edit(penjualan $penjualan)
+    public function edit($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $produk = produk::all();
+        $pelanggan = pelanggan::all();
+        return view('penjualan.edit', compact('penjualan', 'produk', 'pelanggan'));
     }
 
     /**
@@ -67,9 +98,23 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penjualan $penjualan)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        //  $request->validate([
+        //     'nama' => 'required',
+        //     'suplier_id' => 'required',
+        //     'harga' => 'required',
+        //     'stok' => 'required',
+        // ]);
+
+        $penjualan = penjualan::findOrFail($id);
+        $penjualan->pelanggan_id = $request->pelanggan_id;
+        $penjualan->produk_id = $request->produk_id;
+        $penjualan->harga = $request->harga;
+        $penjualan->qty = $request->qty;
+        $penjualan->save();
+        return redirect()->route('penjualan.index');
     }
 
     /**
@@ -78,8 +123,11 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penjualan $penjualan)
+    public function destroy($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $penjualan->delete();
+        return redirect()->route('penjualan.index');
+
     }
 }

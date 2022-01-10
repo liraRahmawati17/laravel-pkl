@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\suplierController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SuplierController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PenjualanDetailController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,9 +68,13 @@ Route::group(['prefix' => 'pengguna', 'middleware' => ['auth', 'role:pengguna']]
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     route::get('/', function () {
         return view('layouts.admin');
-    });
+    })->middleware(['role:admin']);
 
+    Route::resource('produk', ProdukController::class);
+    Route::resource('suplier', SuplierController::class);
+    Route::resource('penjualan', PenjualanController::class);
+    Route::resource('penjualanDetail', PenjualanDetailController::class);
+    Route::resource('pelanggan', PelangganController::class);
+    Route::resource('transaksi', TransaksiController::class);
 });
-Route::resource('barang', BarangController::class);
-Route::resource('suplier', SuplierController::class);
-Route::resource('transaksi', TransaksiController::class);
+

@@ -45,7 +45,6 @@
         <!-- /.navbar-top-links -->
         @include('layouts.bagian.sidebar')
 
-
         <!-- /.nav-second-level -->
         </li>
         </ul>
@@ -57,7 +56,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">tabel barang</h1>
+                    <h1 class="page-header">tabel pembeli</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -66,49 +65,48 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            tabel barang
-                            <a href="{{ route('produk.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data barang</a>
+                            tabel suplier
+                            <a href="{{ route('pelanggan.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data pembeli</a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
+
                                         <tr>
                                             <th>no</th>
-                                            <th>nama barang</th>
-                                            <th>nama suplier</th>
-                                            <th>harga</th>
-                                            <th>stok</th>
+                                            <th>nama</th>
+                                            <th>jenis kelamin</th>
+                                            <th>alamat</th>
+                                            <th>email</th>
                                             <th>aksi</th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
-                                    @php $no=1; @endphp
-                                        @foreach ($produk as $data)
+                                        @php $no=1; @endphp
+                                        @foreach ($pelanggan as $data)
                                             <tr>
 
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->suplier->nama }}</td>
-                                                <td>{{ $data->harga }}</td>
-                                                <td>{{ $data->stok }}</td>
+                                                <td>{{ $data->nama }}</td>
+                                                <td>{{ $data->jenis_kelamin }}</td>
+                                                <td>{{ $data->alamat }}</td>
+                                                <td>{{ $data->email }}</td>
 
                                                 <td>
-                                                    <form action="{{ route ('produk.destroy',$data->id)}}" method="post">
+                                                    <form action="{{ route ('pelanggan.destroy',$data->id)}}" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                <a href="{{route('produk.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                                <a href="{{route('produk.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                                <a href="{{route('pelanggan.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                                <a href="{{route('pelanggan.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                                     </form>    
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                   
-                                    </table>
+                                </table>
                                 
 
                             </div>

@@ -67,7 +67,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             tabel barang
-                            <a href="{{ route('produk.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data barang</a>
+                            <a href="{{ route('transaksi.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data barang</a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -76,31 +76,34 @@
                                     <thead>
                                         <tr>
                                             <th>no</th>
+                                            <th>nama pembeli</th>
                                             <th>nama barang</th>
-                                            <th>nama suplier</th>
+                                            <th>Qty</th>
                                             <th>harga</th>
-                                            <th>stok</th>
+                                            <th>total</th>
                                             <th>aksi</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                     @php $no=1; @endphp
-                                        @foreach ($produk as $data)
+                                        @foreach ($transaksi as $data)
                                             <tr>
 
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->suplier->nama }}</td>
+                                                <td>{{ $data->nama }}</td>
+                                                <td>{{ $data->produk->nama_barang }}</td>
+                                                <td>{{ $data->qty }}</td>
                                                 <td>{{ $data->harga }}</td>
+                                                <td>{{ $data->total }}</td>
                                                 <td>{{ $data->stok }}</td>
 
                                                 <td>
-                                                    <form action="{{ route ('produk.destroy',$data->id)}}" method="post">
+                                                    <form action="{{ route ('transaksi.destroy',$data->id)}}" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                <a href="{{route('produk.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                                <a href="{{route('produk.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                                <a href="{{route('transaksi.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                                <a href="{{route('transaksi.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                                     </form>    
                                                 </td>

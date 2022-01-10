@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\produk;
+use App\Models\suplier;
+
+
+use DB;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -25,8 +29,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
+        $produk = produk::all();
         $suplier = suplier::all();
-        return view ('produk.create', compact ('suplier')) ;
+        return view ('produk.create', compact ('produk','suplier')) ;
     }
 
     /**
@@ -37,20 +42,20 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi data
+        // validasi data
         $request->validate([
-            'nama' => 'required|unique:barangs',
+            'nama_barang' => 'required',
+            'suplier_id' => 'required',
             'harga' => 'required',
             'stok' => 'required',
-            'id_suplier' => 'required',
+            
         ]);
 
         $produk = new produk;
-        $produk->nama = $request->nama;
+        $produk->nama_barang = $request->nama_barang;
+        $produk->suplier_id = $request->suplier_id;
         $produk->harga = $request->harga;
         $produk->stok = $request->stok;
-
-        $produk->id_suplier = $request->id_suplier;
         $produk->save();
         return redirect()->route('produk.index');
 
@@ -62,10 +67,11 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(produk $produk)
+    public function show($id)
     {
         $produk = produk::findOrFail($id);
-        return view('produk.show', compact('produk'));
+        $suplier = suplier::all();
+        return view('produk.show', compact('produk', 'suplier'));
 
     }
 
@@ -75,10 +81,11 @@ class ProdukController extends Controller
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(produk $produk)
+    public function edit($id)
     {
         $produk = produk::findOrFail($id);
-return view('produk.edit', compact('produk', 'suplier'));
+        $suplier = suplier::all();
+        return view('produk.edit', compact('produk', 'suplier'));
 
     }
 
@@ -89,21 +96,20 @@ return view('produk.edit', compact('produk', 'suplier'));
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, produk $produk)
+    public function update(Request $request, $id)
     {
-         $request->validate([
-            'nama' => 'required',
-            'harga' => 'required',
-            'stok' => 'required',
-            'id_suplier' => 'required',
-        ]);
+        //  $request->validate([
+        //     'nama' => 'required',
+        //     'suplier_id' => 'required',
+        //     'harga' => 'required',
+        //     'stok' => 'required',
+        // ]);
 
         $produk = produk::findOrFail($id);
-        $produk->nama = $request->nama;
+        $produk->nama_barang = $request->nama_barang;
+        $produk->suplier_id = $request->suplier_id;
         $produk->harga = $request->harga;
         $produk->stok = $request->stok;
-
-        $produk->id_suplier = $request->id_suplier;
         $produk->save();
         return redirect()->route('produk.index');
     }
@@ -114,7 +120,7 @@ return view('produk.edit', compact('produk', 'suplier'));
      * @param  \App\Models\produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(produk $produk)
+    public function destroy($id)
     {
         $produk = produk::findOrFail($id);
         $produk->delete();

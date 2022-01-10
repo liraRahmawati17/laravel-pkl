@@ -56,7 +56,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Data Suplier</h1>
+                    <h1 class="page-header">edit data Suplier</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -65,39 +65,41 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Table
+                            tabel suplier
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
-                                <thead>
-                                <form action="{{route('suplier.update',$suplier->id)}}" method="post">
-                        @csrf
-                        @method('put')
-                        <div class="form-group">
-                            <label for="">Nama Suplier Baru</label>
-                            <input type="text" name="nama" value="{{$suplier->nama}}" class="form-control @error('nama') is-invalid @enderror">
-                             @error('nama')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="">Alamat Suplier</label>
-                            <input type="text" name="alamat" value="{{$suplier->alamat}}" class="form-control @error('alamat') is-invalid @enderror">
-                             @error('alamat')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <button type="reset" class="btn btn-warning">Reset</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                                </thead>
+                                    <thead>
+                                    <form action="{{route('suplier.update',$suplier->id)}}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <div class="form-group">
+                                        <label for="">Nama Suplier Baru</label>
+                                        <input type="text" name="nama" value="{{$suplier->nama}}" class="form-control @error('nama') is-invalid @enderror">
+                                        @error('nama')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Alamat Suplier</label>
+                                        <input type="text" name="alamat" value="{{$suplier->alamat}}" class="form-control @error('alamat') is-invalid @enderror">
+                                        @error('alamat')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="reset" class="btn btn-warning">Reset</button>
+                                        <button type="submit" class="btn btn-primary">ubah</button>
+                                    </div>
+                            </form>
+                                    </thead>
+
                                 </table>
                             </div>
                             <!-- /.table-responsive -->

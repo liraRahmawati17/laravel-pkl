@@ -57,7 +57,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">tabel barang</h1>
+                    <h1 class="page-header">tabel detail penjualan</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -66,8 +66,9 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            tabel barang
-                            <a href="{{ route('produk.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data barang</a>
+                            tabel detail penjualan
+                            <a href="{{ route('penjualanDetail.create') }}"
+                                class="btn btn-sm btn-primary float-right">Tambah Data detail penjualan</a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -76,40 +77,49 @@
                                     <thead>
                                         <tr>
                                             <th>no</th>
-                                            <th>nama barang</th>
-                                            <th>nama suplier</th>
+                                            <th>admin</th>
+                                            <th>barang</th>
+                                            <th>kualitas</th>
+                                            <th>qty</th>
+                                            <th>tanggal</th>
                                             <th>harga</th>
-                                            <th>stok</th>
                                             <th>aksi</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                    @php $no=1; @endphp
-                                        @foreach ($produk as $data)
+                                        @php $no=1; @endphp
+                                        @foreach ($penjualanDetail as $data)
                                             <tr>
 
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->suplier->nama }}</td>
+                                                <td>{{ $data->penjualan->nama }}</td>
+                                                <td>{{ $data->produk->nama_barang }}</td>
+                                                <td>{{ $data->kualitas }}</td>
+                                                <td>{{ $data->qty }}</td>
+                                                <td>{{ $data->tanggal }}</td>
                                                 <td>{{ $data->harga }}</td>
-                                                <td>{{ $data->stok }}</td>
+
 
                                                 <td>
-                                                    <form action="{{ route ('produk.destroy',$data->id)}}" method="post">
+                                                    <form action="{{ route('penjualanDetail.destroy', $data->id) }}"
+                                                        method="post">
                                                         @method('delete')
                                                         @csrf
-                                                <a href="{{route('produk.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                                <a href="{{route('produk.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
-                                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
-                                                    </form>    
+                                                        <a href="{{ route('penjualanDetail.edit', $data->id) }}"
+                                                            class="btn btn-outline-info">Edit</a>
+                                                        <a href="{{ route('penjualanDetail.show', $data->id) }}"
+                                                            class="btn btn-outline-warning">Show</a>
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                   
-                                    </table>
-                                
+
+                                </table>
+
 
                             </div>
                             <!-- /.table-responsive -->

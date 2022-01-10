@@ -15,14 +15,16 @@ class CreatePenjualansTable extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_produk');
+            $table->string('nama')->unique;
             $table->unsignedBigInteger('pelanggan_id');
+            $table->unsignedBigInteger('produk_id');
             $table->integer('harga');
             $table->integer('qty');
-            $table->integer('total');
             $table->timestamps();
 
             $table->foreign('pelanggan_id')->references('id')->on('pelanggans');
+            $table->foreign('produk_id')->references('id')->on('produks');
+
 
         });
     }

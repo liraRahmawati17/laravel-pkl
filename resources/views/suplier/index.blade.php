@@ -56,7 +56,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Data Suplier</h1>
+                    <h1 class="page-header">tabel Suplier</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -66,9 +66,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             tabel suplier
+                            <a href="{{ route('suplier.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data Suplier</a>
                         </div>
-                        <a href="{{ route('suplier.create') }}" class="btn btn-sm btn-primary float-right">Tambah Data
-                            Suplier</a>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -79,7 +78,7 @@
                                             <th>no</th>
                                             <th>nama</th>
                                             <th>alamat</th>
-
+                                            <th>aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,12 +90,21 @@
                                                 <td>{{ $data->nama }}</td>
                                                 <td>{{ $data->alamat }}</td>
 
-
-
+                                                <td>
+                                                    <form action="{{ route ('suplier.destroy',$data->id)}}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                <a href="{{route('suplier.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                                <a href="{{route('suplier.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
+                                                    </form>    
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                
+
                             </div>
                             <!-- /.table-responsive -->
                         </div>

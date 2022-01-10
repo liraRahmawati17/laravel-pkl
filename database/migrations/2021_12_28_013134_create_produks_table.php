@@ -15,14 +15,14 @@ class CreateProduksTable extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_barang')->unique;
             $table->unsignedBigInteger('suplier_id');
-            $table->string('kode_produk');
-            $table->string('nama_barang');
-            $table->integer('harga');
+            $table->string('harga');
             $table->integer('stok');
+            $table->foreign('suplier_id')->references('id')->on('supliers');
             $table->timestamps();
 
-            $table->foreign('suplier_id')->references('id')->on('supliers');
+            
         });
     }
 

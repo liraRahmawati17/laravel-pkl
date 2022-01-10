@@ -14,7 +14,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = pelanggan::all();
+        return view('pelanggan.index', compact('pelanggan'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan.create');
     }
 
     /**
@@ -35,7 +36,19 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validasi data
+        // $validated = $request->validate([
+        //     'nama' => 'required',
+        //     'alamat' => 'required'
+        // ]);
+
+        $pelanggan = new Pelanggan;
+        $pelanggan->nama = $request->nama;
+        $pelanggan->jenis_kelamin = $request->jenis_kelamin;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->email = $request->email;
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -44,9 +57,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function show(pelanggan $pelanggan)
+    public function show($id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        return view('pelanggan.show', compact('pelanggan'));
     }
 
     /**
@@ -55,9 +69,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        return view('pelanggan.edit', compact('pelanggan'));
     }
 
     /**
@@ -67,9 +82,15 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        $pelanggan->nama = $request->nama;
+        $pelanggan->jenis_kelamin = $request->jenis_kelamin;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->email = $request->email;
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -78,8 +99,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pelanggan $pelanggan)
+    public function destroy($id)
     {
-        //
+        $pelanggan = pelanggan::findOrFail($id);
+        $pelanggan->delete();
+        return redirect()->route('pelanggan.index');
     }
 }

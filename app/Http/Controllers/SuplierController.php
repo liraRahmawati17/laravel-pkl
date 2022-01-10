@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Models\suplier;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,11 @@ class SuplierController extends Controller
     public function index()
     {
         $suplier = suplier::all();
+        session::flash("flash_notification",[
+            "level"=>"success",
+            "message"=>"berhasil menyimpan"
+        ]);
+        
         return view('suplier.index', compact('suplier'));
     }
 
@@ -47,6 +53,14 @@ class SuplierController extends Controller
         $suplier->alamat = $request->alamat;
         $suplier->save();
         return redirect()->route('suplier.index');
+
+        $this->validate($request, ['nama'=>'required|unique:suplier']);
+        $suplier = suplier::create($request->all());
+        Session::flash("flash_notification",[
+            "level"=>"success",
+            "message"=>"berhasil menyimpan"
+        ]);
+        return redirect()->route('suplier.index');
     }
 
     /**
@@ -55,7 +69,7 @@ class SuplierController extends Controller
      * @param  \App\Models\suplier  $suplier
      * @return \Illuminate\Http\Response
      */
-    public function show(suplier $suplier)
+    public function show($id)
     {
         $suplier = Suplier::findOrFail($id);
         return view('suplier.show', compact('suplier'));
@@ -67,7 +81,7 @@ class SuplierController extends Controller
      * @param  \App\Models\suplier  $suplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(suplier $suplier)
+    public function edit($id)
     {
         $suplier = Suplier::findOrFail($id);
         return view('suplier.edit', compact('suplier'));
@@ -81,16 +95,26 @@ class SuplierController extends Controller
      * @param  \App\Models\suplier  $suplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, suplier $suplier)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-        ]);
-        $suplier = Suplier::findOrFail($id);
+        // $validated = $request->validate([
+        //     'nama' => 'required',
+        //     'alamat' => 'required',
+        // ]);
+
+        $suplier = suplier::findOrFail($id);
         $suplier->nama = $request->nama;
         $suplier->alamat = $request->alamat;
         $suplier->save();
+        return redirect()->route('suplier.index');
+
+        $this->validate($request, ['nama'=>'required|unique:suplier,nama,alamat'.$id]);
+        $suplier=suplier::find($id);
+        $suplier->update($request->only('nama'));
+        Session::flash("flash_notification",[
+            "level"=>"success",
+            "message"=>"berhasil menyimpan"
+        ]);
         return redirect()->route('suplier.index');
 
     }
@@ -101,9 +125,9 @@ class SuplierController extends Controller
      * @param  \App\Models\suplier  $suplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(suplier $suplier)
+    public function destroy($id)
     {
-        $suplier = Suplier::findOrFail($id);
+        $suplier = suplier::findOrFail($id);
         $suplier->delete();
         return redirect()->route('suplier.index');
     }

@@ -14,7 +14,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        // $transaksi = transaksi::with('produk')->get();
+        // return view('transaksi.index', compact ('transaksi'));
     }
 
     /**
@@ -24,8 +25,10 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
-    }
+        // $transaksi = transaksi::all();
+        // $produk = produk::all();
+        // return view ('transaksi.create', compact ('transaksi','produk')) ;   
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +38,25 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi data
+        // $request->validate([
+        //     'nama_barang' => 'required',
+        //     'suplier_id' => 'required',
+        //     'harga' => 'required',
+        //     'stok' => 'required',
+            
+        // ]);
+
+        // $transaksi = new transaksi;
+        // $transaksi->nama = $request->nama;
+        // $transaksi->produk_id = $request->produk_id;
+        // $transaksi->qty = $request->qty;
+        // $transaksi->harga = $request->harga;
+        // $transaksi->total = 0;
+        // $transaksi->save();
+
+        // <!-- id: 5 ; produk_id : 10-->
+        // return redirect()->route('produk.index');
     }
 
     /**

@@ -56,7 +56,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">edit data barang</h1>
+                    <h1 class="page-header">tambah data pembeli</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -65,63 +65,37 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            tabel barang
+                            tabel pembeli
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                    <form action="{{route('produk.update',$produk->id)}}" method="post">
-                                    @csrf
-                                    @method('put')
-                                    <div class="form-group">
-                                                <label for="">Nama barang</label>
-                                                <input type="text" name="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror">
-                                                @error('nama_barang')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                        <form Action="{{ route('pelanggan.store') }}" method="post">
+                                            @csrf
+                                            <div class="panel-body">
+                                                <label>nama pelanggan</label>
+                                                <input type="text" class="form-control" name="nama">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="">Nama Suplier</label>
-                                                <select name="suplier_id" class="form-control @error('suplier_id') is-invalid @enderror" >
-                                                    @foreach($suplier as $data)
-                                                    <option value="{{$data->id}}">{{$data->nama}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('suplier_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="panel-body">
+                                                <label>jenis kelamin</label>
+                                                <input type="text" class="form-control" name="jenis_kelamin">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="">harga</label>
-                                                <input type="number" name="harga" value="{{$produk->harga}}" class="form-control @error('harga') is-invalid @enderror">
-                                                @error('harga')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="panel-body">
+                                                <label>alamat pelanggan</label>
+                                                <input type="text" class="form-control" name="alamat">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="">stok</label>
-                                                <input type="number" name="stok" value="{{$produk->stok}}" class="form-control @error('stok') is-invalid @enderror">
-                                                @error('stok')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="panel-body">
+                                                <label>email</label>
+                                                <input type="text" class="form-control" name="email">
                                             </div>
-                                    <div class="form-group">
-                                        <button type="reset" class="btn btn-warning">Reset</button>
-                                        <button type="submit" class="btn btn-primary">ubah</button>
-                                    </div>
-                            </form>
+                                            <div class="panel-body">
+                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                            </div>
+                                        </form>
                                     </thead>
-
                                 </table>
                             </div>
                             <!-- /.table-responsive -->

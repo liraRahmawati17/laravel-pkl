@@ -56,7 +56,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">edit data barang</h1>
+                    <h1 class="page-header">edit data pembeli</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -65,56 +65,52 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            tabel barang
+                            tabel pembeli
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                    <form action="{{route('produk.update',$produk->id)}}" method="post">
+                                    <form action="{{route('pelanggan.update',$pelanggan->id)}}" method="post">
                                     @csrf
                                     @method('put')
                                     <div class="form-group">
-                                                <label for="">Nama barang</label>
-                                                <input type="text" name="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror">
-                                                @error('nama_barang')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">Nama Suplier</label>
-                                                <select name="suplier_id" class="form-control @error('suplier_id') is-invalid @enderror" >
-                                                    @foreach($suplier as $data)
-                                                    <option value="{{$data->id}}">{{$data->nama}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('suplier_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">harga</label>
-                                                <input type="number" name="harga" value="{{$produk->harga}}" class="form-control @error('harga') is-invalid @enderror">
-                                                @error('harga')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">stok</label>
-                                                <input type="number" name="stok" value="{{$produk->stok}}" class="form-control @error('stok') is-invalid @enderror">
-                                                @error('stok')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                        <label for="">Nama Pelanggan</label>
+                                        <input type="text" name="nama" value="{{$pelanggan->nama}}" class="form-control @error('nama') is-invalid @enderror">
+                                        @error('nama')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">jenis pelanggan</label>
+                                        <input type="text" name="jenis_kelamin" value="{{$pelanggan->jenis_kelamin}}" class="form-control @error('jenis_kelamin') is-invalid @enderror">
+                                        @error('jenis_kelamin')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Alamat pelanggan</label>
+                                        <input type="text" name="alamat" value="{{$pelanggan->alamat}}" class="form-control @error('alamat') is-invalid @enderror">
+                                        @error('alamat')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">email pelanggan</label>
+                                        <input type="text" name="email" value="{{$pelanggan->email}}" class="form-control @error('email') is-invalid @enderror">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
                                         <button type="reset" class="btn btn-warning">Reset</button>
                                         <button type="submit" class="btn btn-primary">ubah</button>

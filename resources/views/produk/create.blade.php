@@ -65,26 +65,50 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Table
+                            tabel barang
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                          <form Action="{{ route('produk.store') }}" method="post">
-                            @csrf
-                            <div class="panel-body">
-                                <label>nama suplier</label>
-                                <input type="text" class="form-control" name="nama_merek">
-                            </div>
-                            <div class="panel-body">
-                                <button type="reset" class="btn btn-warning">Reset</button>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
-                            </div>
-                        </form>
-                                    </thead>
+                                        <form Action="{{ route('produk.store') }}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label>nama barang</label>
+                                                <input type="text" class="form-control" name="nama_barang">
+                                            </div>
 
+                                            <div class="form-group">
+                                                <label for="">Nama suplier</label>
+                                                <select name="suplier_id" class="form-control @error('suplier_id') is-invalid @enderror" >
+                                                    @foreach($suplier as $data)
+                                                        <option value="{{$data->id}}">{{$data->nama}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('suplier_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>harga</label>
+                                                <input type="number" class="form-control" name="harga">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>stok</label>
+                                                <input type="number" class="form-control" name="stok">
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                            </div>
+                                        </form>
+                                    </thead>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
