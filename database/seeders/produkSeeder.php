@@ -34,7 +34,7 @@ class produkSeeder extends Seeder
 
         //  membuat sample penjualan
         $penjualan1 = penjualan::create(['nama'=>'lira Rahmawati', 'pelanggan_id'=>$pelanggan1->id, 'produk_id'=>$produk1->id, 'harga'=>'100000', 'qty'=>'5']);
-        $penjualan2 = penjualan::create(['nama'=>'lira Rahmawati', 'pelanggan_id'=>$pelanggan2->id, 'produk_id'=>$produk2->id, 'harga'=>'200000', 'qty'=>'4']);
+        $penjualan2 = penjualan::create(['nama'=>'mey Rahmawati', 'pelanggan_id'=>$pelanggan2->id, 'produk_id'=>$produk2->id, 'harga'=>'200000', 'qty'=>'4']);
 
         //  membuat sample penjualanDetail
         $penjualanDetail1 = penjualanDetail::create(['penjualan_id'=>$penjualan1->id, 'produk_id'=>$produk1->id, 'kualitas'=>'barang baru', 'qty'=>'5', 'tanggal'=>'2020-04-01', 'harga'=>'20000']);

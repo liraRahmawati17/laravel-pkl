@@ -98,7 +98,7 @@
                                                 <input type="number" class="form-control" name="harga">
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group ">
                                                 <label>stok</label>
                                                 <input type="number" class="form-control" name="stok">
                                             </div>

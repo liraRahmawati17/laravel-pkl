@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\SuplierController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PenjualanDetailController;
-use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes(
     [
@@ -30,6 +31,8 @@ Auth::routes(
 );
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/', FrontendController::class);
 
 // hanya untuk role admin
 // Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
@@ -77,4 +80,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('pelanggan', PelangganController::class);
     Route::resource('transaksi', TransaksiController::class);
 });
-
