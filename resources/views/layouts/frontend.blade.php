@@ -99,9 +99,10 @@
                             <div class="text">
                                 <span class="subheading">#New Arrival</span>
                                 <div class="horizontal">
-                                    <h1 class="mb-4 mt-3">Shoes Collection 2019</h1>
-                                    <p class="mb-4">A small river named Duden flows by their place and
-                                        supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                                    <h1 class="mb-4 mt-3">sports equipment collection</h1>
+                                    <p class="mb-4">shop at our store because we provide quality sports
+                                        equipment
+                                        at a more affordable price.</p>
 
                                     <p><a href="#" class="btn-custom">Discover Now</a></p>
                                 </div>
@@ -116,16 +117,16 @@
                 <div class="container-fluid p-0">
                     <div class="row d-flex no-gutters slider-text align-items-center justify-content-end"
                         data-scrollax-parent="true">
-                        <img class="one-third order-md-last img-fluid" src="{{ asset('frontend/images/bg_17.png') }}"
+                        <img class="one-third order-md-last img-fluid" src="{{ asset('frontend/images/2.png') }}"
                             alt="">
                         <div class="one-forth d-flex align-items-center ftco-animate"
                             data-scrollax=" properties: { translateY: '70%' }">
                             <div class="text">
                                 <span class="subheading">#New Arrival</span>
                                 <div class="horizontal">
-                                    <h1 class="mb-4 mt-3">New Shoes Winter Collection</h1>
-                                    <p class="mb-4">A small river named Duden flows by their place and
-                                        supplies it with the necessary regelialia. It is a paradisematic country.</p>
+                                    <h1 class="mb-4 mt-3">New Realleader fitness</h1>
+                                    <p class="mb-4">Realleader Body Building Gym Exercise Sports
+                                        for Buttocks Bridge (HS-1049A).</p>
 
                                     <p><a href="#" class="btn-custom">Discover Now</a></p>
                                 </div>
@@ -147,8 +148,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Free Shipping</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
+                            <p>free shipping with a minimum spend of 30,000.</p>
                         </div>
                     </div>
                 </div>
@@ -159,8 +159,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Support Customer</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
+                            <p>If the item is not 100% original, we guarantee your money will return.</p>
                         </div>
                     </div>
                 </div>
@@ -171,8 +170,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Secure Payments</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
+                            <p>Payment can be cod or use debit.</p>
                         </div>
                     </div>
                 </div>
@@ -184,50 +182,51 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">New Shoes Arrival</h2>
+                    <h2 class="mb-4">sports equipment collection</h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
-                    <div class="product d-flex flex-column">
-                        <a href="#" class="img-prod"><img class="img-fluid"
-                                src="{{ asset('frontend/images/product-1.png') }}" alt="Colorlib Template">
-                            <div class="overlay"></div>
-                        </a>
-                        <div class="text py-3 pb-4 px-3">
-                            <div class="d-flex">
-                                <div class="cat">
-                                    <span>Lifestyle</span>
+        @foreach ($produk as $data)
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
+                        <div class="product d-flex flex-column">
+                            <a href="#" class="img-prod"><img class="img-fluid"
+                                    src="{{ asset('frontend/images/product-1.png') }}" alt="Colorlib Template">
+                                <div class="overlay"></div>
+                            </a>
+                            <div class="text py-3 pb-4 px-3">
+                                <div class="d-flex">
+                                    <div class="cat">
+                                        <span>Lifestyle</span>
+                                    </div>
+                                    <div class="rating">
+                                        <p class="text-right mb-0">
+                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="rating">
-                                    <p class="text-right mb-0">
-                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                    </p>
+                                <h3><a href="#">{{ $data->nama_barang }}</a></h3>
+                                <div class="pricing">
+                                    <p class="price"><span>$120.00</span></p>
                                 </div>
+                                <p class="bottom-area d-flex px-3">
+                                    <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i
+                                                class="ion-ios-add ml-1"></i></span></a>
+                                    <a href="#" class="buy-now text-center py-2">Buy now<span><i
+                                                class="ion-ios-cart ml-1"></i></span></a>
+                                </p>
                             </div>
-                            <h3><a href="#">Nike Free RN 2019 iD</a></h3>
-                            <div class="pricing">
-                                <p class="price"><span>$120.00</span></p>
-                            </div>
-                            <p class="bottom-area d-flex px-3">
-                                <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i
-                                            class="ion-ios-add ml-1"></i></span></a>
-                                <a href="#" class="buy-now text-center py-2">Buy now<span><i
-                                            class="ion-ios-cart ml-1"></i></span></a>
-                            </p>
                         </div>
                     </div>
                 </div>
-
-            </div>
         </div>
+        @endforeach
         </div>
         </div>
         </div>

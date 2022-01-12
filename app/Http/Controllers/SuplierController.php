@@ -16,12 +16,16 @@ class SuplierController extends Controller
     public function index()
     {
         $suplier = suplier::all();
-        session::flash("flash_notification",[
-            "level"=>"success",
-            "message"=>"berhasil menyimpan"
-        ]);
-        
-        return view('suplier.index', compact('suplier'));
+        // session::flash("flash_notification",[
+        //     "level"=>"success",
+        //     "message"=>"berhasil menyimpan"
+        // ]);
+        // ubah ke json
+        return response()->json([
+            'success' => true,
+            'message' => 'list Data Suplier',
+            'data' => $suplier
+        ], 200);
     }
 
     /**
